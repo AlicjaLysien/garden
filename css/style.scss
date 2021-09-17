@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Varela+Round&display=swap');
 
 $background: #F9FBF8;
-$text: #393c39;
+$text: #353b35;
 $textLight: #F9FBF8;
-$textLightHover: #c1c8c1;
+$textLightHover: #c5cec5;
 $width: calc(100% - 5rem);
 
 * {
@@ -111,7 +111,8 @@ section.flowers-line {
             a{
                 font-size: 1.8rem;
                 color: $textLight;
-                &:hover{
+                transition: .2s;
+                &:hover i{
                     color: $textLightHover;
                 }
             }
@@ -184,30 +185,49 @@ header {
     display: flex;
     justify-content: center;
     align-content: center;
+    position: relative;
     height: 100vh;
     width: $width;
     margin-left: 5rem;
-    background: linear-gradient(to top, rgba(70, 70, 70, 0.7), rgba(173, 172, 172, 0.3)), url(../img/slider01.jpg) center no-repeat;
-    background-size: cover;
-    animation: slide 20s infinite;
+    img.slider {
+        background: linear-gradient(to top, rgba(70, 70, 70, 0.7), rgba(173, 172, 172, 0.3));
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -5;
+        object-fit: cover;
+    }
+    .slider01 {
+        animation: slide 21s infinite;
+        opacity: 0.5;
+    }
+    .slider02 {
+        animation: slide 21s infinite 7s, slideopacity 7s 0s;
+        opacity: 0;
+    }
+    .slider03 {
+        animation: slide 21s infinite 14s, slideopacity 7s 7s;
+        opacity: 0;
+    }
     div {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        img {
+        img.logo {
             height: 120px;
         }
         h2 {
             margin: 10px 0 25px;
             color: $textLight;
             text-align: center;
-            font-size: 3.5rem;
+            font-size: 3.8rem;
         }
-        a { 
+        a.rounded { 
             mix-blend-mode: screen;
             color: black;
             background: $background;
+            font-size: 2.6rem;
             &:hover {
                 color: $background;
             }
@@ -216,14 +236,32 @@ header {
 }
 
 @keyframes slide {
-    33%{
-        background: linear-gradient(to top, rgba(70, 70, 70, 0.7), rgba(173, 172, 172, 0.3)), url(../img/slider02.jpg) center no-repeat;
+    0% {
+        opacity: 0.5;
     }
-    66%{
-        background: linear-gradient(to top, rgba(70, 70, 70, 0.7), rgba(173, 172, 172, 0.3)), url(../img/slider03.jpg) center no-repeat;
+    8% {
+        opacity: 1;
     }
-    100%{
-        background: linear-gradient(to top, rgba(70, 70, 70, 0.7), rgba(173, 172, 172, 0.3)), url(../img/slider01.jpg) center no-repeat;
+    15% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    95% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes slideopacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.5;
     }
 }
 
@@ -356,6 +394,51 @@ header {
     }
 }
 
+footer {
+    margin-left: 5rem;
+    margin-top: 40px;
+    background: $text;
+    color: $textLight;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    section {
+        flex: 1 1 33%;
+    }
+    h3 {
+        color: $textLight;
+        font-size: 2em;
+        margin: 10px 0;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        li {
+            padding: 5px 10px;
+            a {
+                text-decoration: none;
+                color: $textLight;
+                position: relative;
+                padding-bottom: 3px;
+                &:after {
+                    position: absolute;
+                    content: "";
+                    bottom: 0;
+                    left: 0;
+                    height: .05rem;
+                    width: 0px;
+                    background: $textLight;
+                    transition: width .4s ease-out;
+                }
+                &:hover:after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 1300px) {
     .team {
         .workers {
@@ -375,6 +458,7 @@ header {
                 }
                 p, h3 {
                     padding-left: 120px;
+                    padding-right: 50px;
                 }
             }
         }
@@ -410,10 +494,31 @@ header {
     }
 }
 
-@media(max-width: 430px){
-    a.rounded {
-        margin: auto;
+@media (max-width: 620px) {
+    .team {
+        .workers {
+            .worker {
+                margin: 30px 10% 20px 10%;
+                border-radius: 200px 200px 50px 50px;
+                img {
+                    position: relative;
+                    width: 110%;
+                    left: -5%;
+                    top: 0px;
+                }
+                p, h3 {
+                    padding-left: 3px;
+                    padding-right: 3px;
+                }
+                h3 {
+                    margin: 0 0 0 15px;
+                }
+            }
+        }
     }
+}
+
+@media (max-width: 430px) {
     h1 {
         text-align: center;
     }
@@ -443,47 +548,9 @@ header {
             }
         }
     }
-    .team {
-        .workers {
-            .worker {
-                margin: 150px 10% 20px 10%;
-                img {
-                    position: absolute;
-                    width: 100%;
-                    top: -130px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
-                p, h3 {
-                    padding-left: 0;
-                }
-                h3 {
-                    padding-top: 100px;
-                }
-            }
-        }
-    }
-}
-
-@media(max-width: 360px){
-    .team {
-        .workers {
-            .worker {   
-                h3 {
-                    padding-top: 40px;
-                }
-            }
-        }
-    }
-}
-@media(max-width: 300px){
-    .team {
-        .workers {
-            .worker {   
-                h3 {
-                    padding-top: 10px;
-                }
-            }
+    footer {
+        section {
+            flex: 1 1 100%;
         }
     }
 }
