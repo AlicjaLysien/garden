@@ -4,6 +4,7 @@ $background: #F9FBF8;
 $text: #393c39;
 $textLight: #F9FBF8;
 $textLightHover: #c1c8c1;
+$width: calc(100% - 5rem);
 
 * {
     font-family: 'Varela Round', sans-serif;
@@ -39,10 +40,21 @@ h1 {
     line-height: 0.8em;
 }
 
+h2, h3 {
+    font-family: 'Parisienne', cursive;
+}
+
 p {
     margin: 10px 0 30px;
     text-align: justify;
     line-height: 1.5em;
+}
+section.flowers-line {
+    margin: 20px 0 20px 5rem;
+    width: $width;
+    display: flex;
+    height: 30px;
+    background: url(../img/flower.png) repeat-x;
 }
 
 .menu {
@@ -173,10 +185,11 @@ header {
     justify-content: center;
     align-content: center;
     height: 100vh;
-    width: calc(100% - 5rem);
+    width: $width;
     margin-left: 5rem;
     background: linear-gradient(to top, rgba(70, 70, 70, 0.7), rgba(173, 172, 172, 0.3)), url(../img/slider01.jpg) center no-repeat;
     background-size: cover;
+    animation: slide 20s infinite;
     div {
         display: flex;
         flex-direction: column;
@@ -190,7 +203,6 @@ header {
             color: $textLight;
             text-align: center;
             font-size: 3.5rem;
-            font-family: 'Parisienne', cursive;
         }
         a { 
             mix-blend-mode: screen;
@@ -203,14 +215,29 @@ header {
     }
 }
 
+@keyframes slide {
+    33%{
+        background: linear-gradient(to top, rgba(70, 70, 70, 0.7), rgba(173, 172, 172, 0.3)), url(../img/slider02.jpg) center no-repeat;
+    }
+    66%{
+        background: linear-gradient(to top, rgba(70, 70, 70, 0.7), rgba(173, 172, 172, 0.3)), url(../img/slider03.jpg) center no-repeat;
+    }
+    100%{
+        background: linear-gradient(to top, rgba(70, 70, 70, 0.7), rgba(173, 172, 172, 0.3)), url(../img/slider01.jpg) center no-repeat;
+    }
+}
+
 .about {
     margin-left: 5rem;
-    width: calc(100% - 5rem);
+    width: $width;
     display: flex;
     flex-direction: row;
+    align-items: center;
     .content{
         padding: 20px;
-        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
         flex: 0 1 50%;
         max-width: 50%;
         width: 50%;
@@ -238,22 +265,40 @@ header {
 
 .services {
     margin-left: 5rem;
-    width: calc(100% - 5rem);
+    width: $width;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    padding-bottom: 20px;
     p {
+        width: $width;
         padding: 20px;
-        margin: auto;
+        text-align: center;
+        margin: 0;
     }
-    .service {
-        flex: 1 0 50%;
-        max-width: 50%;
-        width: 100%;
-        img {
-            max-width: 100%;
+    .allservices {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 20px;
+        .service {
+            text-align: center;
+            flex: 1 0 21%;
+            max-width: 21%;
+            width: 100%;
+            padding: 2%;
+            img {
+                max-width: 100%;
+                border-radius: 15px;
+                opacity: 0.95;
+            }
+            h3 {
+                font-size: 22px;
+                margin: 6px;
+            }
         }
     }
     a {
@@ -262,6 +307,105 @@ header {
         &:hover {
             color: $text;
             background: transparent;
+        }
+    }
+}
+
+.team {
+    width: $width;
+    margin-left: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .workers {
+        display: flex;
+        flex-direction: row;
+        min-height: 300px;
+        margin-bottom: 100px;
+        .worker {
+            position: relative;
+            background: $text;
+            color: $textLight;
+            border-radius: 20px;
+            margin: 120px 30px 0 120px;
+            h3 {
+                font-size: 2rem;
+                margin: 20px 10px 10px;
+                padding-left: 280px;
+            }
+            img {
+                border-radius: 50%;
+                position: absolute;
+                top: -80px;
+                left: -80px;
+            }
+            p {
+                margin: 10px 10px 20px;
+                padding-left: 280px;
+            }
+        }
+    }
+    a {
+        background: $text;
+        color: $textLight;
+        &:hover {
+            color: $text;
+            background: transparent;
+        }
+    }
+}
+
+@media (max-width: 1300px) {
+    .team {
+        .workers {
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            .worker {
+                flex: 0 0 80%;
+                width: 80%;
+                border-radius: 20px;
+                padding-left: 0;
+                margin: 50px 5% 50px 15%;
+                img {
+                    position: absolute;
+                    top: -25%;
+                    left: -15%;
+                    width: 220px;
+                }
+                p, h3 {
+                    padding-left: 120px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 820px) {
+    .services {
+        .allservices {
+            .service {
+                text-align: center;
+                flex: 1 0 45%;
+                max-width: 45%;
+                width: 100%;
+                padding: 2.5%;
+            }
+        }
+    }
+    .team {
+        .workers {
+            .worker {
+                img {
+                    position: absolute;
+                    top: -10px;
+                    left: -10%;
+                    width: 180px;
+                }
+                p, h3 {
+                    padding-left: 150px;
+                }
+            }
         }
     }
 }
@@ -275,7 +419,7 @@ header {
     }
     .menu {
         nav {
-            width: calc(100vw - 5rem);
+            width: $width;
         }
     }
     .about {
@@ -283,8 +427,63 @@ header {
         justify-content: center;
         .content, .images{
             flex: 0 0 100%;
-            max-width: calc(100% - 5rem);
-            width: calc(100% - 5rem);
+            max-width: $width;
+            width: $width;
+            align-items: center;
+        }
+    }
+    .services {
+        .allservices {
+            .service {
+                text-align: center;
+                flex: 1 0 100%;
+                max-width: 100%;
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    }
+    .team {
+        .workers {
+            .worker {
+                margin: 150px 10% 20px 10%;
+                img {
+                    position: absolute;
+                    width: 100%;
+                    top: -130px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                p, h3 {
+                    padding-left: 0;
+                }
+                h3 {
+                    padding-top: 100px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 360px){
+    .team {
+        .workers {
+            .worker {   
+                h3 {
+                    padding-top: 40px;
+                }
+            }
+        }
+    }
+}
+@media(max-width: 300px){
+    .team {
+        .workers {
+            .worker {   
+                h3 {
+                    padding-top: 10px;
+                }
+            }
         }
     }
 }
