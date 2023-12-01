@@ -23,7 +23,8 @@ body {
 
 a.rounded {
     font-family: 'Parisienne', cursive;
-    padding: 3px 24px 0px;
+    font-weight: 900;
+    padding: 4px 24px 0px;
     font-size: 34px;
     text-decoration: none;
     border-radius: 16px;
@@ -36,7 +37,7 @@ a.rounded {
 h1 {
     font-family: 'Parisienne', cursive;
     font-size: 46px;
-    margin: 15px 0px 0px;
+    margin: 14px 0px 0px;
     line-height: 0.8em;
 }
 
@@ -63,13 +64,13 @@ section.flowers-line {
     }
     .opener:checked ~ aside {
         .line-1 {
-            transform: rotate(-45deg) translate(-8px, 5px);
+            transform: rotate(-45deg) translate(-8px, 4px);
         }
         .line-2 {
             opacity: 0;
         }
         .line-3 {
-            transform: rotate(45deg) translate(-8px, -5px);
+            transform: rotate(45deg) translate(-8px, -4px);
         }
     }
     aside {
@@ -198,15 +199,15 @@ header {
         object-fit: cover;
     }
     .slider01 {
-        animation: slide 21s infinite;
-        opacity: 0.5;
+        animation: slide 18s infinite;
+        opacity: 0;
     }
     .slider02 {
-        animation: slide 21s infinite 7s, slideopacity 7s 0s;
+        animation: slide 18s infinite 6s;
         opacity: 0;
     }
     .slider03 {
-        animation: slide 21s infinite 14s, slideopacity 7s 7s;
+        animation: slide 18s infinite 12s;
         opacity: 0;
     }
     div {
@@ -218,12 +219,12 @@ header {
             height: 120px;
         }
         h2 {
-            margin: 10px 0 25px;
+            margin: 10px 0 24px;
             color: $textLight;
             text-align: center;
             font-size: 3.8rem;
         }
-        a.rounded { 
+        a.rounded {
             mix-blend-mode: screen;
             color: black;
             background: $background;
@@ -237,31 +238,19 @@ header {
 
 @keyframes slide {
     0% {
-        opacity: 0.5;
+        opacity: 0;
     }
-    8% {
+    10% {
         opacity: 1;
     }
-    15% {
+    40% {
         opacity: 1;
     }
     50% {
         opacity: 0;
     }
-    95% {
-        opacity: 0;
-    }
     100% {
-        opacity: 0.5;
-    }
-}
-
-@keyframes slideopacity {
-    0% {
         opacity: 0;
-    }
-    100% {
-        opacity: 0.5;
     }
 }
 
@@ -271,7 +260,7 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    .content{
+    .content {
         padding: 20px;
         display: flex;
         flex-direction: column;
@@ -511,7 +500,7 @@ footer {
                     padding-right: 3px;
                 }
                 h3 {
-                    margin: 0 0 0 15px;
+                    margin: 0 0 0 14px;
                 }
             }
         }
@@ -521,6 +510,14 @@ footer {
 @media (max-width: 430px) {
     h1 {
         text-align: center;
+    }
+    header {
+        div {
+            h2 {
+                font-size: 2.8rem;
+                font-weight: 900;
+            }
+        }
     }
     .menu {
         nav {
